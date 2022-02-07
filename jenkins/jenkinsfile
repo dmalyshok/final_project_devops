@@ -20,7 +20,7 @@ pipeline {
             steps {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
-                scp -r -i "/var/lib/jenkins/jenkins_dev.pub" www/* ubuntu@172.31.27.97:/var/www/html/
+                sh "scp -r -i "/var/lib/jenkins/jenkins_dev.pub" www/* ubuntu@172.31.27.97:/var/www/html/"
                 echo "End of Stage Build"
             }
         }
