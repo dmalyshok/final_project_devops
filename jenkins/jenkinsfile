@@ -35,10 +35,11 @@ pipeline {
         stage('Test_Stage_Docker') {
             agent {
                 docker { image 'httpd' }
+                args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
             }
             steps {
                 sh 'ls -la'
-                sh 'ss -ant'
+                sh 'sudo ls -la /var/www/html'
             }
         }
         stage('Deploy_to_DEV_server') {
