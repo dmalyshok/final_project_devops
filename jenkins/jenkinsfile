@@ -1,22 +1,49 @@
-pipeline {
-    agent any
+// pipeline {
+//     agent any
 
+//     stages {
+//         stage('1-Build') {
+//             steps {
+//                 echo "Start of Stage Build"
+//                 echo "Building......."
+//                 echo "End of Stage Build"
+//             }
+//         }
+//         stage('2-Test') {
+//             steps {
+//                 echo "Start of Stage Test"
+//                 echo "Testing......."
+//                 echo "End of Stage Build"
+//             }
+//         }
+//         stage('3-Deploy') {
+//             steps {
+//                 echo "Start of Stage Deploy"
+//                 echo "Deploying......."
+//                 sh 'scp -r -i "/var/lib/jenkins/jenkins_dev.pub" www/* ubuntu@172.31.27.97:/var/www/html/'
+//                 echo "End of Stage Build"
+//             }
+//         }
+//     }
+// }
+
+
+
+pipeline {
+    agent none
     stages {
-        stage('1-Build') {
+        stage('Test_Stage_Docker') {
+            agent {
+                docker { image 'httpd:2.4' }
+            }
             steps {
-                echo "Start of Stage Build"
-                echo "Building......."
-                echo "End of Stage Build"
+                sh 'ls -la'
+                sh 'curl http://127.0.0.1'
             }
         }
-        stage('2-Test') {
-            steps {
-                echo "Start of Stage Test"
-                echo "Testing......."
-                echo "End of Stage Build"
-            }
-        }
-        stage('3-Deploy') {
+        stage('Deploy_to_DEV_server') {
+            agent any
+
             steps {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
