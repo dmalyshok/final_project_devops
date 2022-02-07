@@ -38,7 +38,7 @@ pipeline {
             }
             steps {
                 sh 'ls -la'
-                sh 'ss -ant | grep :80'
+                sh 'ss -ant'
                 sh 'ls -la /var/www/html/'
                 sh 'curl http://127.0.0.1'
             }
