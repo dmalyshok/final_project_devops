@@ -38,7 +38,6 @@ pipeline {
             }
             steps {
                 sh 'ls -la'
-                sh 'curl http://127.0.0.1'
             }
         }
         stage('Deploy_to_DEV_server') {
