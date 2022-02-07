@@ -34,11 +34,12 @@ pipeline {
     stages {
         stage('Test_Stage_Docker') {
             agent {
-                docker { image 'httpd' }
+                docker { image 'httpd-with-curl' }
             }
             steps {
                 sh 'ls -la'
                 sh 'ss -ant | grep :80 | wc -l'
+                sh 'curl http://127.0.0.1'
             }
         }
         stage('Deploy_to_DEV_server') {
