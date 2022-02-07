@@ -34,7 +34,7 @@ pipeline {
     stages {
         stage('Test_Stage_Docker') {
             agent {
-                docker { image 'webratio/httpd-with-curl' }
+                docker { image 'webratio/httpd-with-curl:2.4.29' }
             }
             steps {
                 sh 'ls -la'
