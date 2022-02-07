@@ -35,7 +35,7 @@ pipeline {
         stage('Test_Stage_Docker') {
             agent {
                 docker { image 'httpd' }
-                args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
+                //args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
             }
             steps {
                 sh 'ls -la'
