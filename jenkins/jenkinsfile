@@ -38,6 +38,7 @@ pipeline {
             }
             steps {
                 sh 'ls -la'
+                sh 'ss -ant | grep :80 | wc -l'
             }
         }
         stage('Deploy_to_DEV_server') {
