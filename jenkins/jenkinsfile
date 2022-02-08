@@ -30,13 +30,14 @@
 
 
 pipeline {
-    agent none
+    agent {label 'docker'}
     stages {
         stage('Test_Stage_Docker') {
-            agent {
-                //docker { image 'httpd' }
-                //args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
-            }
+            agent any
+            // {
+            //     docker { image 'httpd' }
+            //     args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
+            // }
             steps {
                 sh 'ls -la'
                 sh 'sudo ls -la /var/www/html'
