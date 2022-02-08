@@ -34,7 +34,7 @@ pipeline {
     stages {
         stage('Test_Stage_Docker') {
             agent {
-                docker { image 'httpd' }
+                //docker { image 'httpd' }
                 //args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
             }
             steps {
