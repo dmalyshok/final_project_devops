@@ -9,5 +9,6 @@ RUN apt-get install apache2-utils -y
 RUN apt install net-tools -y
 RUN apt install curl -y
 RUN apt-get clean
+COPY www/* /var/www/html/
 EXPOSE 80
 CMD  [ "/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

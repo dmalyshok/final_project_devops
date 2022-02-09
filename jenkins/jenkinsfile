@@ -2,10 +2,11 @@ pipeline {
     agent {label 'docker'}
 
     stages {
-        stage('1-Build') {
+        stage('1-Build Docker') {
             steps {
                 echo "Start of Stage Build"
                 echo "Building......."
+                sh 'pwd'
                 echo "End of Stage Build"
             }
         }
