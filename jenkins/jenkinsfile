@@ -7,13 +7,9 @@ pipeline {
                 echo "Start of Stage Build"
                 echo "Building Docker Image"
                 sh '''
-                if sudo docker ps | grep dmalyshok/apache
-                then
                 sudo docker stop $(sudo docker ps -aq)
-                elif
                 sudo docker build -t dmalyshok/apache:v${BUILD_NUMBER} -f ./docker/Dockerfile .
                 sudo docker run -d -p 8080:80 dmalyshok/apache:v${BUILD_NUMBER}
-                fi
                 '''
                 echo "Docker"
             }
