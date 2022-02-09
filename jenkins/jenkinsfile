@@ -14,7 +14,7 @@ pipeline {
                 echo "Docker"
             }
         }
-        stage('2-Test') {
+        stage('2-Test Run Docker') {
             steps {
                 sh '''
                 export status=$(curl -o /dev/null -s -w "%{http_code}\n" http://127.0.0.1:8080)
@@ -27,42 +27,12 @@ pipeline {
                 '''
             }
         }
-        stage('3-Deploy') {
+        stage('3-Deploy and Run Docker') {
             steps {
-                echo "Start of Stage Deploy"
-                echo "Deploying......."
-                //sh 'scp -r -i "/var/lib/jenkins/jenkins_dev.pub" www/* ubuntu@172.31.27.97:/var/www/html/'
-                //sh 'cp www/* /var/www/html/'
-                echo "End of Stage Build"
+                sh '''
+                sudo docker save -o /home/ubuntu/apache_artifact_v${BUILD_NUMBER} dmalyshok/apache:v${BUILD_NUMBER}
+                '''
             }
         }
     }
 }
-
-
-
-// pipeline {
-//     agent {label 'docker'}
-//     stages {
-//         stage('Test_Stage_Docker') {
-//             agent any
-//             // {
-//             //     docker { image 'httpd' }
-//             //     args '-v /var/lib/jenkins/workspace/Project_Pipeline:/var/www/html'
-//             // }
-//             steps {
-//                 sh 'ls -la'
-//             }
-//         }
-//         stage('Deploy_to_DEV_server') {
-//             agent any
-
-//             steps {
-//                 echo "Start of Stage Deploy"
-//                 echo "Deploying......."
-//                 sh 'scp -r -i "/var/lib/jenkins/jenkins_dev.pub" www/* ubuntu@172.31.27.97:/var/www/html/'
-//                 echo "End of Stage Build"
-//             }
-//         }
-//     }
-// }
