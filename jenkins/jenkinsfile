@@ -5,8 +5,8 @@ pipeline {
         stage('1-Build Docker') {
             steps {
                 echo "Start of Stage Build"
-                echo "Building......."
-                sh 'pwd'
+                echo "Building Docker Image"
+                sh 'cd docker; sudo docker build -t dmalyshok/apache:v${BUILD_NUMBER} .'
                 echo "End of Stage Build"
             }
         }
