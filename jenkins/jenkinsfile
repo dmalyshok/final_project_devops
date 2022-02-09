@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh '''
                 export status=$(curl -o /dev/null -s -w "%{http_code}\n" http://127.0.0.1:8080)
-                if [ $status -eq 201 ]
+                if [ $status -eq 200 ]
                 then
                 exit 0
                 else
