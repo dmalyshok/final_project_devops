@@ -7,6 +7,7 @@ pipeline {
                 echo "Start of Stage Build"
                 echo "Building Docker Image"
                 sh 'cd docker; sudo docker build -t dmalyshok/apache:v${BUILD_NUMBER} .'
+                sh 'sudo docker run -d -p 8080:80 dmalyshok/apache:v${BUILD_NUMBER}'
                 echo "End of Stage Build"
             }
         }
@@ -22,7 +23,7 @@ pipeline {
                 echo "Start of Stage Deploy"
                 echo "Deploying......."
                 //sh 'scp -r -i "/var/lib/jenkins/jenkins_dev.pub" www/* ubuntu@172.31.27.97:/var/www/html/'
-                sh 'cp www/* /var/www/html/'
+                //sh 'cp www/* /var/www/html/'
                 echo "End of Stage Build"
             }
         }
