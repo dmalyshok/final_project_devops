@@ -8,7 +8,6 @@ pipeline {
                   sh 'echo "Download content with AWS creds"'
                      s3Download(file:"apache_artifact_v58", bucket:'dmitry.malyshok.org.ua', path:'apache_artifact_v58', force:true)
                 }
-                sh "ls -la"
            }  
         }
     }
