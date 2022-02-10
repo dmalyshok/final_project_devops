@@ -6,8 +6,9 @@ pipeline {
             steps {
                 withAWS(region:'eu-central-1',credentials:'aws-cred') {
                   sh 'echo "Download content with AWS creds"'
-                     s3Download(file:"/var/lib/jenkins/jobs/Prodaction_Pipeline", bucket:'dmitry.malyshok.org.ua', path:'apache_artifact_v58', force:true)
+                     s3Download(file:".", bucket:'dmitry.malyshok.org.ua', path:'apache_artifact_v58', force:true)
                 }
+                sh "ls -la"
            }  
         }
     }
