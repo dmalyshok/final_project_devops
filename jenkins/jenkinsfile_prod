@@ -4,21 +4,11 @@ pipeline {
     stages {
         stage('1-Deploy_From_S3_To_Prod') {
             steps {
-                  withAWS(region:'eu-central-1',credentials:'aws-cred') {
+                withAWS(region:'eu-central-1',credentials:'aws-cred') {
                   sh 'echo "Download content with AWS creds"'
                      s3Download(file:"/home/ubuntu/jenkins/apache_artifact_v68", bucket:'dmitry.malyshok.org.ua', path:'.', force:true)
-            }
+                }
            }  
-        }
-        stage('Step2') {
-            steps {
-
-            }
-        }
-        stage('Step3') {
-            steps {
-
-            }
         }
     }
 }
