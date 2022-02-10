@@ -31,6 +31,7 @@ pipeline {
             steps {
                 sh '''
                 sudo docker save -o /home/ubuntu/jenkins/apache_artifact_v${BUILD_NUMBER} dmalyshok/apache:v${BUILD_NUMBER}
+                sudo chmod 777 /home/ubuntu/jenkins/apache_artifact_v${BUILD_NUMBER}
                 '''
             }
         }
@@ -38,7 +39,7 @@ pipeline {
               steps {
                   withAWS(region:'eu-central-1',credentials:'aws-cred') {
                   sh 'echo "Uploading content with AWS creds"'
-                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file: '/home/ubuntu/jenkins/apache_artifact_v58', bucket:'dmitry.malyshok.org.ua')
+                      s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file: "/home/ubuntu/jenkins/apache_artifact_v${BUILD_NUMBER}", bucket:'dmitry.malyshok.org.ua')
                   }
               }
         }
