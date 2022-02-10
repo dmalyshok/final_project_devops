@@ -41,6 +41,7 @@ pipeline {
                       s3Upload(pathStyleAccessEnabled: true, payloadSigningEnabled: true, file:'/home/ubuntu/apache_artifact_v49', bucket:'dmitry.malyshok.org.ua')
                   }
               }
+        }
 
     }
 }
