@@ -8,8 +8,9 @@ pipeline {
                   sh 'echo "Download content with AWS creds"'
                      s3Download(file:"apache_artifact", bucket:"dmitry.malyshok.org.ua", path:"apache_artifact", force:true)
                    sh 'sudo mv apache_artifact /home/artifact/'
-                   sh 'docker load -i /home/artifact/apache_artifact'
-                   sh 'docker run -d -p 80:80 apache_artifact'
+                   sh 'sudo docker stop $(sudo docker ps -aq)'
+                   sh 'sudo docker load -i /home/artifact/apache_artifact'
+                   sh 'sudo docker run -d -p 80:80 apache_artifact'
                 }
            }  
         }
