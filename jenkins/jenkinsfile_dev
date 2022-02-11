@@ -8,8 +8,8 @@ pipeline {
                 echo "Building Docker Image"
                 sh '''
                 sudo docker stop $(sudo docker ps -aq)
-                sudo docker build -t dmalyshok/apache:v${BUILD_NUMBER} -f ./docker/Dockerfile .
-                sudo docker run -d -p 8080:80 dmalyshok/apache:v${BUILD_NUMBER}
+                sudo docker build -t dmalyshok/apache:latest -f ./docker/Dockerfile .
+                sudo docker run -d -p 8080:80 dmalyshok/apache:latest
                 '''
                 echo "Docker"
             }
