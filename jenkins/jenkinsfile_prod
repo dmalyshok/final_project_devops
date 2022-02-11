@@ -6,8 +6,10 @@ pipeline {
             steps {
                 withAWS(region:'eu-central-1',credentials:'aws-cred') {
                   sh 'echo "Download content with AWS creds"'
-                     s3Download(file:"apache_artifact_v8", bucket:"dmitry.malyshok.org.ua", path:"apache_artifact_v8", force:true)
-                  sh 'sudo mv apache_artifact_v8 /home/artifact/'
+                     s3Download(file:"apache_artifact", bucket:"dmitry.malyshok.org.ua", path:"apache_artifact", force:true)
+                   sh 'sudo mv apache_artifact /home/artifact/'
+                   sh 'docker load -i /home/artifact/apache_artifact'
+                   sh 'docker run -d -p 80:80 apache_artifact'
                 }
            }  
         }
