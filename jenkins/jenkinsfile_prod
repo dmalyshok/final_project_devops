@@ -7,7 +7,7 @@ pipeline {
                 withAWS(region:'eu-central-1',credentials:'aws-cred') {
                   sh 'echo "Download content with AWS creds"'
                      s3Download(file:"apache_artifact_v58", bucket:"dmitry.malyshok.org.ua", path:"apache_artifact_v58", force:true)
-                  sh 'mv apache_artifact_v58 /home/jenkins/'
+                  sh 'mv apache_artifact_v58 /home/artifact/'
                 }
            }  
         }
