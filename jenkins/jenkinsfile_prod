@@ -1,5 +1,5 @@
 pipeline {
-    agent {label 'main'}
+    agent {label 'prod'}
 
     stages {
         stage('1-Deploy_From_S3_To_Prod') {
