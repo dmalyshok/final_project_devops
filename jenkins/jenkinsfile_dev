@@ -30,7 +30,7 @@ pipeline {
         stage('3-Deploy and Run Docker') {
             steps {
                 sh '''
-                sudo docker save -o /home/ubuntu/jenkins/apache_artifact_v${BUILD_NUMBER} dmalyshok/apache:v${BUILD_NUMBER}
+                sudo docker export /home/ubuntu/jenkins/apache_artifact_v${BUILD_NUMBER} dmalyshok/apache:v${BUILD_NUMBER}
                 sudo chmod 777 /home/ubuntu/jenkins/apache_artifact_v${BUILD_NUMBER}
                 '''
             }
